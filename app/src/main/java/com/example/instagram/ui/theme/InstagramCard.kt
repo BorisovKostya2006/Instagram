@@ -1,5 +1,7 @@
 package com.example.instagram.ui.theme
 
+import android.R
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -10,6 +12,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,24 +27,34 @@ import androidx.compose.ui.unit.dp
 @Preview()
 @Composable
 fun InstagramCard() {
-    Row(
-        modifier = Modifier.fillMaxWidth()
-            .padding(top = 8.dp),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White,
+        ),
+        shape = RoundedCornerShape(
+            topEnd = 4.dp,
+            topStart = 4.dp
+        ),
+        border = BorderStroke(width = 1.dp, Color.Black)
     ) {
+        Row(
+            modifier = Modifier.fillMaxWidth()
+                .padding(top = 8.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
 
-        Box(
-            modifier = Modifier
-                .size(50.dp)
+            Box(
+                modifier = Modifier
+                    .size(50.dp)
 
-                .background(Color.Yellow)
-        )
-        TwoBoxes()
-        TwoBoxes()
-        TwoBoxes()
+                    .background(Color.Yellow)
+            )
+            TwoBoxes()
+            TwoBoxes()
+            TwoBoxes()
+        }
     }
-
 }
 @Composable
 private fun TwoBoxes(){
