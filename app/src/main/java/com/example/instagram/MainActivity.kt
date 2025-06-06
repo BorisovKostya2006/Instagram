@@ -17,30 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.instagram.ui.theme.InstagramCard
 import com.example.instagram.ui.theme.InstagramTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Instagram()
+            InstagramCard()
         }
     }
 }
-@Preview
-@Composable
-fun Instagram(){
-    Row (
-        modifier = Modifier.fillMaxWidth()
 
-    ){
-        for (i in 1..4){
-            Box(
-                modifier = Modifier.weight(1f)
-                    .border(width = 1.dp, color = Color.DarkGray)
-            ){
-                Text("$i")
-            }
-        }
-    }
-}
