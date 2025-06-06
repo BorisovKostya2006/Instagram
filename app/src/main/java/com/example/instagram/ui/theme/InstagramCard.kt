@@ -1,14 +1,11 @@
 package com.example.instagram.ui.theme
 
-import android.R
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -21,8 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import org.w3c.dom.Text
 
 @Preview()
 @Composable
@@ -50,26 +52,27 @@ fun InstagramCard() {
 
                     .background(Color.Yellow)
             )
-            TwoBoxes()
-            TwoBoxes()
-            TwoBoxes()
+            UserStatics(value = "6,950", title = "posts")
+            UserStatics(value = "436M", title = "followers")
+            UserStatics(value = "76", title = "following")
         }
     }
 }
 @Composable
-private fun TwoBoxes(){
+private fun UserStatics(
+    value: String,
+    title: String
+){
     Column {
-        Box(
-            modifier = Modifier
-                .size(25.dp)
 
-                .background(Color.Red)
+        Text(
+            text = value,
+            fontSize = 24.sp,
+            fontFamily = FontFamily.Cursive
         )
-        Box(
-            modifier = Modifier
-                .size(25.dp)
-
-                .background(Color.Blue)
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold
         )
     }
 
