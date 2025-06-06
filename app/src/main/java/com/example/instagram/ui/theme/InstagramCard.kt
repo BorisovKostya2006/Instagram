@@ -29,17 +29,17 @@ import androidx.compose.ui.unit.dp
 fun InstagramCard() {
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = Color.White,
+            containerColor = MaterialTheme.colorScheme.surface,
         ),
         shape = RoundedCornerShape(
             topEnd = 4.dp,
             topStart = 4.dp
         ),
-        border = BorderStroke(width = 1.dp, Color.Black)
+        border = BorderStroke(width = 1.dp, MaterialTheme.colorScheme.onBackground)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()
-                .padding(top = 8.dp),
+                .padding(top = 8.dp, bottom = 8.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
