@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -45,24 +47,38 @@ fun InstagramCard() {
         ),
         border = BorderStroke(width = 1.dp, MaterialTheme.colorScheme.onBackground)
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth()
-                .padding(top = 8.dp, bottom = 8.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth()
+                    ,
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
 
-            Image(
-                modifier = Modifier.size(50.dp)
-                    .clip(CircleShape)
-                    .background(Color.White),
-                painter = painterResource(id = R.drawable.instagram),
-                contentDescription = "",
-            )
-            UserStatics(value = "6,950", title = "posts")
-            UserStatics(value = "436M", title = "followers")
-            UserStatics(value = "76", title = "following")
+                Image(
+                    modifier = Modifier.size(50.dp)
+                        .clip(CircleShape)
+                        .background(Color.White),
+                    painter = painterResource(id = R.drawable.instagram),
+                    contentDescription = "",
+                )
+                UserStatics(value = "6,950", title = "posts")
+                UserStatics(value = "436M", title = "followers")
+                UserStatics(value = "76", title = "following")
+            }
+            Text(text = "Instagram",
+                fontSize = 32.sp,
+                fontFamily = FontFamily.Cursive)
+            Text(text = "#YoursToMake",
+                fontSize = 14.sp)
+            Text(text = "www.facebook.com/emotional_health",
+                fontSize = 14.sp)
+            Button (onClick = {},  shape = RoundedCornerShape(8.dp)
+                ){
+                Text(text = "follow")
+            }
         }
+
     }
 }
 @Composable
