@@ -14,11 +14,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,6 +40,7 @@ import org.w3c.dom.Text
 @Preview()
 @Composable
 fun InstagramCard() {
+    val clickState = rememberSaveable { mutableStateOf(true) }
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
@@ -73,9 +77,27 @@ fun InstagramCard() {
                 fontSize = 14.sp)
             Text(text = "www.facebook.com/emotional_health",
                 fontSize = 14.sp)
-            Button (onClick = {},  shape = RoundedCornerShape(8.dp)
-                ){
-                Text(text = "follow")
+            Button (onClick = {
+                    clickState.value = !clickState.value
+            },  shape = RoundedCornerShape(8.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = if (!clickState.value) {
+                        MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
+                    }
+                    else{
+                        MaterialTheme.colorScheme.primary
+                    }
+                )
+                )
+            {
+                val unfollow = "Unfollow"
+                val follow = "Follow"
+                if (clickState.value){
+                    Text(text = follow)
+                }else{
+                    Text(text = unfollow)
+                }
+
             }
         }
 
