@@ -19,12 +19,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import com.example.instagram.ui.theme.InstagramCard
 import com.example.instagram.ui.theme.InstagramTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         setContent {
             InstagramTheme {
                 Box(
@@ -32,7 +34,7 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.background)
                 ) {
-                    InstagramCard()
+                    InstagramCard(viewModel)
                 }
             }
 

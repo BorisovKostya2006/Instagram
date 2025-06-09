@@ -20,6 +20,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -34,13 +35,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.instagram.MainActivityViewModel
 import com.example.instagram.R
 import org.w3c.dom.Text
 
-@Preview()
+
 @Composable
-fun InstagramCard() {
-    val clickState = rememberSaveable { mutableStateOf(true) }
+fun InstagramCard(viewModel: MainActivityViewModel) {
+    val clickState = viewModel.clicked.collectAsState()
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
@@ -78,7 +80,7 @@ fun InstagramCard() {
             Text(text = "www.facebook.com/emotional_health",
                 fontSize = 14.sp)
             Button (onClick = {
-                    clickState.value = !clickState.value
+                    viewModel.changedClicked()
             },  shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = if (!clickState.value) {
